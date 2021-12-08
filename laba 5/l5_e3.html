@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 3</p>   
+        <script>
+            string = prompt("Введите строку");
+            document.write("<p> Введенная строка: ", string,"</p>");
+            string = string.replace(/[\wа-я]/g, function(str) {
+            let c = str.charCodeAt(0); // в с записываем код символа
+            switch(c) {
+                case 'я'.charCodeAt(0): // для русского алфавита
+                    c = 'а'.charCodeAt(0);
+                    break;
+                case 'z'.charCodeAt(0): // для англиского 
+                    c = 'a'.charCodeAt(0);
+                    break;
+                default:
+                    c++; // добаляем 1 к коду символа
+                }
+                return String.fromCharCode(c);
+            });
+            document.write("<p> Результат шифрования: ", string,"</p>");
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

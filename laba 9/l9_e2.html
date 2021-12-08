@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<button onmouseover="Invisibility()" id='button' style="position: absolute; height: 100px; width: 100px;">Кнопка</button>
+</body>
+<script>
+	function Invisibility() 
+	{
+		let button = document.getElementById('button');
+		button.style.display = "none";
+		setTimeout(myTimeout1, 3000);
+	}
+
+	function myTimeout1() 
+	{
+		let top = getRandomInt(500);
+		let left = getRandomInt(1000);
+		button.style.display = "inline";
+		button.style.left = left + "px";
+		button.style.top = top + "px";
+		button.style.position = "absolute";
+	}
+
+	function getRandomInt(max) 
+	{
+		return Math.floor(Math.random() * Math.floor(max));
+	}
+</script>
+</html>

@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+  <meta charset="utf-8">
+  <style>
+    iframe {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+    <input id="back" type="button" value="<<Назад" onclick="previousPage()">
+    <input id="forward" type="button" value="Вперед>>" onclick="nextPage()">
+    <input id="source" type="text" value="https://www.litres.ru/">
+    <input id="open" type="button" value="Открыть" onclick="openPage()">
+    <label for="blank"><input id="blank" type="checkbox" value="_blank"> В новом окне</label><br>
+    <iframe name="inner-frame" id="innerFrame" src="https://www.litres.ru/" sandbox="" frameborder="2" width="1100" height="600"></iframe>
+
+    <script>
+      function openPage(event) {
+        let url = new URL(source.value);
+        if(blank.checked) {
+            window.open(url,'_blank','width=200,height=200');
+        } else {
+          innerFrame.src= url;
+        }      
+      }
+      function previousPage(event) {
+        innerFrame.contentWindow.top.history.back();
+      }
+      function nextPage(event) {
+        innerFrame.contentWindow.top.history.forward();
+      }
+    </script>
+
+</body>
+</html>

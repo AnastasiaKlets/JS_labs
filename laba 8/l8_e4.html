@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>Клец Анастасия</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href = "style.css">
+</head>
+<body>
+    <div>
+        <table id="table"></table>
+        <button id="buttonNew" >New Table</button>
+    </div>
+    <div id="newTable">
+        <div id="modalWindow">
+            <input placeholder="Screen_diagonal " type="text">
+            <input placeholder="CPU" type="text">
+            <input placeholder="Screen_resolution" type="text">
+            <input placeholder="Operating_system" type="text">
+            <input placeholder="RAM" type="text">
+            <input placeholder="Inner_memory" type="text">
+            <input placeholder="Data" type="text">
+            <input placeholder="Cost" type="text">
+            <div>
+                <button id="New Table">New Table</button>
+                <button id="Cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+        <script>
+           class Table{
+                constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory){
+                    this.Screen_diagonal = Screen_diagonal;
+                    this.CPU=CPU;
+                    this.Screen_resolution=Screen_resolution;
+                    this.Operating_system=Operating_system;
+                    this.RAM=RAM;
+                    this.Inner_memory=Inner_memory;
+                }
+                showInfo(){
+                    return`
+                    ${this.Screen_diagonal},
+                    ${this.CPU},
+                    ${this.Screen_resolution},
+                    ${this.Operating_system},
+                    ${this.RAM},
+                    ${this.Inner_memory}`
+                }
+            }
+            class successorTable extends Table{
+                constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory, date, cost){
+                    super(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory);
+                    this.date=date;
+                    this.cost=cost;
+                }
+                get getDate() { return this.date} 
+                set setDate (value) { this.date = value}
+                get getCost() {return this.cost}
+                set setCost(value) { this.cost = value}
+                showInformation(){
+                    
+                    return`${super.showInfo()},
+                    ${this.date}, 
+                    ${this.cost}`
+                }
+
+            }
+            function randomm(min, max){
+                let rand = min + Math.random()*(max+1-min);
+                return Math.floor(rand);
+            }
+            function createArray(count){
+                let arr = []
+                for(let i = 0; i < count; i++ ){
+                    arr[i] = new successorTable (randomm(5, 15),`CPU`,`Screen resolution`,`Operating system`,`RAM`,`Inner memory`, new Date('01/10/2018').toLocaleDateString(), randomm(100,900));
+                }
+                return arr
+            }
+            
+            function CreateTable(arr) {
+                let table = document.querySelector("#table");
+                let string = "<tr><th>" + Object.keys(arr[0]).join("</th><th>") + "</th></tr>"
+                arr.forEach(element => {
+                    string += "<tr>";
+                    for (let i in element) {
+                        string += "<td>" + element[i] + "</td>"
+                    }
+                    string += "</tr>"
+                });
+                table.innerHTML = string;
+            }
+            let arr = createArray(9);
+            CreateTable(arr);
+            document.getElementById('New Table').addEventListener('click', () => {
+                let textbox = document.querySelectorAll('#modalWindow>input')
+                let newTable = new Table(textbox[0].value, textbox[1].value, textbox[2].value,textbox[3].value, textbox[4].value, textbox[5].value, textbox[6].value, textbox[7].value)
+                arr.push(newTable)
+                CreateTable(arr);
+            })
+            document.getElementById('buttonNew').addEventListener('click', () => {
+                document.getElementById('newTable').style.display = 'block'})
+                
+            document.getElementById('Cancel').addEventListener('click', () => {
+                document.getElementById('newTable').style.display = 'none'})
+        </script>
+</body>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

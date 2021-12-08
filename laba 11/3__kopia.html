@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>3</title>
+    <meta charset="utf-8">
+    <style>
+    </style>
+</head>
+<body>
+    <input id="input" type="file">
+    <div></div>
+    <script>
+        function processElement(el) {
+            let res = `<${el.name}>`;
+            if (el.text) {
+                res += el.text;
+            }
+            if (el.children) {
+                for (const child of el.children) {
+                    res += processElement(child);
+                }
+            }
+            res += `</${el.name}>`;
+            return res;
+        }
+        
+        function read() {
+        let f = document.getElementById('input').files[0]
+        let reader = new FileReader()
+        reader.readAsText(f)
+        reader.onloadend = function () {
+        let obj = JSON.parse(reader.result)
+        let str = ""
+        for (let el of obj) {
+            str += processElement(el);
+        }
+        document.body.innerHTML += str;
+        };
+        }
+        document.getElementById('input').addEventListener('change', read)
+        </script>
+</body>
+</html>
+
+
+

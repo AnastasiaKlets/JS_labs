@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 17</p>   
+        <script>
+            let count = 10;
+            let str = "";
+            var possible = "abcdefghijklmnopqrstuvwxyz";
+            for (let i = 0; i < 10; i++){
+                if (i%2 == 0) {
+                   str += i;  
+                }
+                else{
+                    str += possible.charAt(Math.floor(Math.random() * possible.length));
+                }
+            }
+            document.write("<p> Результат: ", str, "<p>");
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

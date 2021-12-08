@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<style>
+		#modal{display: none;
+			color:red;
+			position: fixed;
+			z-index: 1;
+			left: 80px;
+			top: 20px;
+			width: 100%;
+			height: 100%;
+			display: none;}
+
+	</style>
+</head>
+
+<body>
+	<div id="modal">
+        <p id="h1">Одно из полей не было заполнено!</p>
+        <div>            
+            <button id="back2">Назад</button>
+        </div>
+    </div>  
+		<form name="form">
+			<textarea cols="25" rows="5" name="about" readonly>Текст задания</textarea><br/>
+			<div>Введите число a: <input name="a" type="text" size="5px"/></div>
+			<div>Введите число b: <input name="b" type="text" size="5px"/></div>
+			<div>Введите число c: <input name="c" type="text" size="5px"/></div>
+			<div>Результат выполнения программы: <input name="result" type="text" size="5px"/></div>
+			<input type="submit" value="Вычислить" />
+		</form>
+</body>
+<script>	
+	document.form.onsubmit = function () {
+		let a = parseFloat(this.a.value);
+		let b = parseFloat(this.b.value);
+		let c = parseFloat(this.c.value);
+		if (!isNaN(a) && !isNaN(b) && !isNaN(c)) {
+			let average = (a + b + c) / 3;
+			this.result.value = average;
+		}
+		else {
+			modal.style.display = "block";
+			
+		}
+		return false;
+	}
+	$('#back2').on('click', () => {
+            $('#modal').css('display', 'none')
+        })
+</script>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

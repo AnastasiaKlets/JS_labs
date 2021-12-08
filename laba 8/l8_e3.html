@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div><b>Горизонтальные линии</b><br>Выберите значения параметров и нажмите кнопку <b>Выполнить</b></div>
+	<div id="line"></div>
+	<form name="form">
+			<div>
+				Расположение линии:
+				<input name="align" type="radio" value="left">Слево
+				<input name="align" type="radio" value="center">По центру
+				<input name="align" type="radio" value="right">Справо
+			</div>
+			<div>
+				Толщина и длина линии:
+				<input name="height" type="text" size="3px"/>
+				<input name="width" type="text" size="3px"/>
+            </div>
+            <div style="width:9em;padding:5px">
+                <label for="idColor">Выберите цвет линии:</label>
+                <input type="color" list="colorList" name="color" id="idColor" value="#FFCCCC">
+                <datalist id="colorList">
+                <option value="#000000">
+                <option value="#FFFFFF">
+                <option value="#FF0000">
+                <option value="#00FF00">
+                <option value="#0000FF">
+                <option value="#FFFF00">
+                <option value="#00FF00">
+                <option value="#00FFFF">
+                <option value="#FF00FF">
+                <option value="#C0C0C0">
+                <option value="#808080">
+                <option value="#800000">
+                <option value="#808000">
+                <option value="#008000">
+                <option value="#800080">
+                <option value="#008080">
+                <option value="#000080">
+                <option value="#008080">
+                <option value="#FFCCFF">
+                <option value="#FFCCE5">  
+                <option value="#CCE5FF">
+                <option value="#E0E0E0">
+                <option value="#FFFF33">
+                <option value="#CCFF99">
+                <option value="#FFE5CC">
+                <option value="#FFCCCC">      
+                </datalist>
+            </div>
+			<br>
+			<input type="submit" value="Выполнить" />
+	</form>	
+</body>
+<script>
+	let line = document.getElementById("line").style;
+	line.backgroundColor = "#FFCCCC";
+	line.width = "200px";
+	line.height = "10px";
+	document.form.onsubmit = function () {
+		line.backgroundColor = this.color.value + "";
+		line.height = this.height.value + "px";
+		line.width = this.width.value + "px";
+		if (this.align.value == "center") {
+			line.margin = "0 auto";
+		}
+		else if (this.align.value == "left") {
+			line.margin = "0 auto 0 0";
+		}	
+		else if (this.align.value == "right"){
+			line.margin = "0 0 0 auto";
+		}
+		return false;
+	}
+</script>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

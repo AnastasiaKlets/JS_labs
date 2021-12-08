@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+</body>
+<script>
+	let info = new XMLHttpRequest();
+	let lang = new XMLHttpRequest();
+
+	info.open('GET', 'https://www.nbrb.by/api/exrates/rates/ils?parammode=2');
+	lang.open('GET', 'https://www.nbrb.by/API/ExRates/Currencies/64');
+	info.send();
+	lang.send();
+	let objFirst, objSecond;
+	info.onload = function () {
+		objFirst = JSON.parse(info.response);
+		document.write('<table id = "table">');
+		document.write(`<td><img src="flag_izrailja.jpg" width=100 height = 100></td>`);
+		document.write(`<td>${objFirst.Cur_OfficialRate/objFirst.Cur_Scale}</td>`);
+		document.write(`<td>${objFirst.Date}</td>`);
+	};
+	lang.onload = function () {
+			objSecond = JSON.parse(lang.response);
+			console.log(objSecond);
+			document.write(`<td>${objSecond.Cur_Name_Eng}</td>`);
+			document.write(`<td>${objSecond.Cur_Name_Bel}</td>`);
+			let cell = document.getElementsByTagName("td");
+			for (let i = 0; i < cell.length; i++) {
+			 cell[i].style.border = "1px solid black";
+			}
+	};
+</script>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

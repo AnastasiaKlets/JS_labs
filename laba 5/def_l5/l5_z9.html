@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 9</p>   
+        <script>
+           function longestWord(str) {
+                let str1 = str.split(' ');
+                let longestWord = str.split(' ').sort(function(a, b) { return b.length - a.length; });
+                return longestWord[0];
+            }
+            let string = prompt("Введите строку");
+            document.write("<p> Введенная строка: ", string, "<p>");
+            document.write("<p> Результат: ", longestWord(string), "<p>");
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

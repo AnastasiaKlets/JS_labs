@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>   
+        <script>
+            let arr = [];
+            let arr2 = [];
+            let count = 20;
+            document.write("<p> Массив чисел <\p>");
+            for (let i = 0; i < count; i++) {
+                arr[i] = Math.floor( -10 + Math.random() * (20));  
+                document.write(" ", arr[i], " ");
+            }
+            let j = 0;
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i] % 2 == 0) {                    
+                    
+                    arr2[j]=i
+                    j++;
+                }  
+
+            }
+            document.write("<p> Массив индексов четных элементов <\p>");
+            for (let i = 0; i < arr2.length; i++) { 
+                document.write(" ", arr2[i], " ");
+            }
+           
+                
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

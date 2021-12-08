@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 2</p>   
+        <script>
+            string = prompt("Введите строку");
+            document.write("<p> Введенная строка: ", string, "</p>");
+            t = string.split(/ +/g); // запись последнего слова
+            document.write("<p> Количество букв в последнем слове: ", t[t.length-2].length, "</p>"); // вывод длины
+            string = string.replace(/\w+/g, str =>
+            str = str.charAt(str.length-1) + str.substr(1, str.length-2) + str.charAt(0)); // меняем местами буквы 1ю и последнюю
+            document.write("<p> Результат: ", string, "</p>");
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Vankovich Vladislav
+	</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<input id="date" type="text" size="10" maxlength="15" placeholder="MM/YYYY" />
+	<button id="but" onclick="myfunction()">Нажать</button>
+	<div id="calendar"></div>
+	<input type="button" value="Добавить праздник" onclick="addevent()">
+	<input type="button" value="Очистить хранилище" onclick="clearTable()">
+
+</body>
+<script>
+	let tooltipElem;
+	document.onclick = function (event) {
+		let target = event.target;
+		// если у нас есть подсказка...
+		let tooltipHtml = target.dataset.tooltip;
+		if (!tooltipHtml) return;
+		// ...создадим элемент для подсказки
+		tooltipElem = document.createElement('div');
+		tooltipElem.className = 'tooltip';
+		tooltipElem.innerHTML = tooltipHtml;
+		document.body.append(tooltipElem);
+		// спозиционируем его сверху от аннотируемого элемента (top-center)
+		let coords = target.getBoundingClientRect();
+
+		tooltipElem.style.left = coord.left + 'px';
+		tooltipElem.style.top = coord.top + 'px';
+	};
+	document.onmouseout = function (e) {
+
+		if (tooltipElem) {
+			tooltipElem.remove();
+			tooltipElem = null;
+		}
+
+	};
+	function clearTable() {
+		localStorage.clear();
+		let cells = document.getElementsByTagName('td');
+		for (let i = 0; i < cells.length; i++) {
+			cells[i].classList.remove('event');
+		}
+	}
+	var events = [];
+	function addevent() {
+		let hday = parseInt(prompt("Введите день"));
+		let hdescription = prompt("Введите описание");
+
+		let event = {
+			day: hday,
+			description: hdescription
+		}
+		events.push(event);
+		let str = JSON.stringify(events);
+
+		localStorage.setItem('events', str);
+		console.log(localStorage)
+		addData();
+	}
+	function myfunction() {
+		let inp = document.getElementById('date');
+		let str = inp.value.split('/');
+		let m = str[0];
+		let y = str[1];
+		function newMonth(elem, year, month) {
+			let mon = month - 1; // 0-11
+			let d = new Date(year, mon);
+			let table = '<table><tr><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th></tr><tr>';
+
+			for (let i = 0; i < getDay(d); i++) {
+				table += '<td></td>';
+			}
+
+			while (d.getMonth() == mon) {
+				table += '<td>' + d.getDate() + '</td>';
+
+				if (getDay(d) % 7 == 6) {
+					table += '</tr><tr>';
+				}
+				d.setDate(d.getDate() + 1);
+			}
+
+			if (getDay(d) != 0) {
+				for (let i = getDay(d); i < 7; i++) {
+					table += '<td></td>';
+				}
+			}
+			table += '</tr></table>';
+			elem.innerHTML = table;
+		}
+
+		function getDay(date) {
+			let day = date.getDay();
+			if (day == 0) day = 7;
+			return day - 1;
+		}
+		newMonth(calendar, y, m);
+		addData();
+
+		function addData() {
+			let eventList = JSON.parse(localStorage.getItem('events'));
+			let cells = document.getElementsByTagName('td');
+			for (let i = 0; i < cells.length; i++) {
+				for (let j = 0; j < eventList.length; j++) {
+					if (cells[i].innerHTML == eventList[j].day) {
+						cells[i].classList.add('event');
+						cells[i].setAttribute('data-tooltip', `${eventList[j].description}`);
+					}
+				}
+
+			}
+		}
+
+	}
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Клец Анастасия</title>
+		<meta charset="utf-8">
+		<style>
+			ul {
+				user-select: none;
+			}
+		</style>
+    </head>
+    <p>Задание 6</p>
+    <body>    
+		<ul id="List">
+			<li onclick = list(event,1) id="1">Харука Мураками «Портрет командора» часть 1</li>
+			<li onclick = list(event,2) id="2">Сюзан Нейпир «Волшебный мир Хаяо Миядзаки»</li>
+			<li onclick = list(event,3) id="3">Оскар Уайльд «Портрет Дориана Грея»</li>
+			<li onclick = list(event,4) id="4">Джордж Оруэлл «1984»</li>
+			<li onclick = list(event,5) id="5">Говард Лавкрафт «Зов Ктулух»</li>
+		</ul>
+	</body>
+	<script>
+		let previous = 1;
+		function list(e, pressed) 
+		{
+			let allList = document.getElementById("List");
+			let book = document.getElementById(pressed);
+			let elementOfList = allList.getElementsByTagName("li");
+
+			if (e.shiftKey) {
+				let nextElement, next;
+				if (pressed > previous) {
+					next = previous;
+					while(next <= pressed) {
+						nextElement = document.getElementById(next);
+						nextElement.style.color = "tomato";
+						next++;
+					}
+				}else{
+					next = pressed;
+					while(next <= previous) {
+						nextElement = document.getElementById(next);
+						nextElement.style.color = "tomato";
+						next++;
+					}
+				}
+				previous = pressed
+				return;
+			}
+
+			if (e.ctrlKey) {
+				if (book.style.color == "tomato")
+					book.style.color = "black";
+				else
+					book.style.color = "tomato";
+				previous = pressed;
+				return;
+			}
+			
+			for (any of elementOfList) {
+				any.style.color = "black";
+			}
+			book.style.color = "tomato";
+			previous = pressed
+		}
+	</script>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>  
+</html>

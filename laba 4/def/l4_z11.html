@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>   
+        <script>
+            let arr = [];
+            let count = 20;
+            document.write("<p> Массив чисел <\p>");
+            for (let i = 0; i < count; i++) {
+                arr[i] = Math.floor( -10 + Math.random() * (20));  
+                document.write(" ", arr[i], " ");
+            }
+            let sum = 0;
+            let cont=0;
+            for (let i = 0; i< count; i++){  
+                if(arr[i] > 0){
+                    sum = sum + arr[i];  
+                    cont++;
+                }                          
+            }
+            let avg = 0;
+            avg = sum/cont;
+            document.writeln("<p> среднее положительных элементов avg = ", avg.toFixed(2), "<\p>");  
+                
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

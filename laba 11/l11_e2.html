@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<input type="date" id="begin" value="2010-10-10"/>
+	<input type="date" id="end" value="2010-11-10"/>
+	<button onclick="list()" name="list">Отобразить</button>
+</body>
+<script>
+	function list() {
+		let begin = document.getElementById("begin").value;
+		let end = document.getElementById("end").value;
+		let site = 'https://www.nbrb.by/API/ExRates/Rates/Dynamics/145?startDate=' + begin + '&endDate=' + end;
+		function get(site) {
+			return new Promise(function (resolve, reject) {
+				let request = new XMLHttpRequest();
+				request.open("GET", site);
+				request.addEventListener("load", function () {
+					if (request.status == 200){
+						resolve(request.response);
+						document.write("Данные успешно получены:<br>");
+					}	
+					else
+						reject(document.write("Ошибка запроса: " + request.statusText));
+				});
+				request.send();
+			});
+		}
+		get(site).then(function (text) {
+			let obj = JSON.parse(text);
+			document.write('<table id = "table">');
+				document.write(`<tr><td>Date</td><td>Rate</td></tr>`);
+			for (let i = 0; i < obj.length; i++) {
+				document.write(`<tr><td>${obj[i].Date.substring(0,10)}</td><td>${obj[i].Cur_OfficialRate}</td></tr>`);
+				let cell = document.getElementsByTagName("td");
+				for (let i = 0; i < cell.length; i++) {
+					cell[i].style.border = "1px solid black";
+			}
+			}	
+		});
+	}
+</script>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

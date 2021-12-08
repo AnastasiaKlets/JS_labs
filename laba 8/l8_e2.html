@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+   <meta charset="utf-8">
+</head>
+<body>
+    <form name="form">
+        <h2>База содержит результаты центраизованного тестирования</h2>
+        <div id="form-row">
+           Серия паспорта
+           <input name="passportSeries" type="text">
+           <div id="passportSeriesError" id="exept">Введите серию паспорта</div>
+        </div>
+
+        <div id="form-row">
+           Номер паспорта
+           <input name="passportNumber" type="text">    
+           <div id="passportNumberError" id="exept">Введите номер паспорта</div>  
+        </div>
+
+        <div id="form-row">
+           Номер бланка
+           <input name="blankNumber" type="text">
+           <div id="blankNumberError" id="exept">Введите номер бланка</div>
+        </div>
+
+        <div id="form-row">
+           Предмет
+           <select name="subjects">
+              <option >Выберите предмет:</option>
+              <option >Математика</option>
+              <option >Русский язык</option>
+              <option >Химия</option>
+              <option >Биология</option>
+              <option >Английский язык</option>
+              <option >Китайский язык</option>
+              <option >Белорусский язык</option>
+              <option >История Беларуси</option>
+              <option >Всемираня история</option>
+              <option >Обществоведение</option>
+              <option >Физика</option>
+              <option >География</option>
+              <option >Французский язык</option>
+              <option >Испанский язык</option>
+              <option >Немецкий язык</option>
+           </select>
+           <div id="subjectsError" id="exept">Выберите предмет</div>
+        </div>
+
+        <img src="capcha.jpg" width="100px">
+        <div id="form-row">
+           Код на картинке
+           <input id="capchaCode" name="capchaCode" type="text">           
+           <div id ="capchaCodeError" id="exept">Введите цифры с картинки</div>
+        </div>
+     
+        <input id="button" type="submit" value="Найти">
+     </form>
+</body>
+<script>
+	document.form.onsubmit = function () {
+		document.getElementById("passportSeriesError").style.display = "none";
+		if (this.passportSeries.value.replace(/[a-zA-Z]{2}/, "") != "" || this.passportSeries.value == "") 
+			document.getElementById("passportSeriesError").style.display = "block";
+
+		document.getElementById("passportNumberError").style.display = "none";
+		if (this.passportNumber.value.replace(/(.*\d.*){7}/, "") != "" || this.passportNumber.value == "") 
+			document.getElementById("passportNumberError").style.display = "block";
+
+		document.getElementById("blankNumberError").style.display = "none";
+		if (this.blankNumber.value.replace(/(.*\d.*){7}/, "") != "" || this.blankNumber.value == "") 
+			document.getElementById("blankNumberError").style.display = "block";
+
+		document.getElementById("subjectsError").style.display = "none";
+		if (this.subjects.value == "Выберите предмет:") 
+			document.getElementById("subjectsError").style.display = "block";
+
+		document.getElementById("capchaCodeError").style.display = "none";
+		if (this.capchaCode.value != "424636") 
+			document.getElementById("capchaCodeError").style.display = "block";
+		return false;
+	}
+</script>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

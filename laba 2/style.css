@@ -1,0 +1,11 @@
+#red {
+  color: red;
+}
+table {
+border: 1px solid black;
+}
+
+td{
+border: 1px solid black;
+padding: 5px;
+}

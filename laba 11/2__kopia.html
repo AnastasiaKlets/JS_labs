@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>2</title>
+    <meta charset="utf-8">
+    <style>
+        label {
+            display: block;
+        }
+        button {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <select id="list"></select>
+    <label for="text">Введите текст:</label>
+    <input id="text" type="text" size="20" value="">
+    <button id="add">Добавить элемент</button>
+    <script>
+        let array = ['header', 'ol', 'ul', 'h1', 'h2', 'h3', 'h4', 'div', 'p']
+        let list = document.getElementById('list')
+        for (el of array) {
+            list.options[list.length] = new Option(el,el)
+        }
+        document.getElementById('add').addEventListener('click', () => {
+            let selectedValue = document.getElementById("list").value
+            let el = document.createElement(selectedValue)
+            el.textContent = document.getElementById('text').value
+            document.body.append(el)
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<html>
+    <head>    
+        <meta charset="UTF-8" />
+        <title>Клец Анастасия</title>
+    </head>
+    <body >
+        <div>
+            <p>Задание 2</p> 
+            <ul>
+                <li><a href="index-html">index-html</a></li>
+                <li><a href="https://google.com">https://google.com</a></li>
+                <li><a href="https://www.gstu.by/">https://www.gstu.by/</a></li>
+                <li><a href="file:///G:/users/RPI/test.html">file:///G:/users/RPI/test.html</a></li>
+                <li><a href="local-path">local-path</a></li>
+                <li><a href="http://www.php.su/">http://www.php.su/</a></li>
+                <li><a href="/images/cat.jpg">/images/cat.jpg</a></li>
+                <li><a href="https://www.tut.by/">https://www.tut.by/</a></li>
+            </ul>
+
+            <script type="text/javascript">
+                let aArr = Array.prototype.slice.call( document.links )
+                aArr.forEach(a => { 
+                    if(/^https?:\/\//.test(a.getAttribute('href'))) 
+                        a.setAttribute('style','text-decoration: underline dashed;')})
+            </script>
+        </div>
+        <footer>
+            <p>Copyright  Клец А.А. ИП-31</p> 
+        </footer>
+    </body>
+</html>

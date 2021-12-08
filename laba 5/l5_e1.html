@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 1</p>   
+        <script>
+          let string = prompt("Введите строку");
+          document.write("<p> Введенная строка: ", string, "<p>");
+          string = string.replace(/;\?/g, ''); // ищим символы
+          let t = string.match(/o/gi);  // ищим совпадения
+          let count = t == null ? 0 : t.length;
+          document.write("<p> Количество 'O' и 'o': ", count,"</p>");
+          document.write("<p> Результат: ", string, "<p>");
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

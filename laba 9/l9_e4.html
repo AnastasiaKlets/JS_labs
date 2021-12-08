@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+	<style>
+		#big {
+			width: 1500px;
+			height: 1500px;
+		}
+		#div {
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			background: #2e5e7b;
+		}
+	</style>
+</head>
+<body onmousemove="moveCursor(event)">
+	<div id="big"> <div id='div'></div></div>
+</body>
+<script>
+	let fi = 0, x = 100, y = 100, radius = 50, x0 = 100, y0 = 100, timer = null;
+
+	function moveCursor(event)
+	{
+		clearInterval(timer);
+		timer = setInterval(changeCoords, 10, event);
+	}
+
+	function changeCoords(event) 
+	{
+		x0 = event.pageX - 10;
+		y0 = event.pageY - 10;
+
+		x = x0 - Math.cos(fi) * radius;
+		y = y0 + Math.sin(fi) * radius;
+		fi += 0.02;
+		let div = document.getElementById('div');
+		div.style.left = x + 'px';
+		div.style.top = y + 'px';
+	}
+</script>
+</html>

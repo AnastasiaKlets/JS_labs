@@ -1,0 +1,61 @@
+<html>
+    <head>    
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="l7_e3.css">
+        <title>Клец Анастасия</title>
+    </head>
+    <body> 
+        <div><p>Задание 3</p></div>   
+        <ul id="List">
+                <li><span class="folder">Folder C</span>
+                  <ul class="inFolder">
+                    <li>Intel</li>
+                    <li>Program Files</li>
+                    <li>Program Files(x86)</li>
+                    <li>User</li>
+                  </ul>
+
+                <li><span class="folder">Folder D </span>
+                  <ul class="inFolder">
+                    <li>Null</li>
+                  </ul>
+
+                <li><span class="folder">Folder E</span>
+                    <ul class="inFolder">
+                      <li>Null</li>
+                    </ul>
+
+                <li><span class="folder">Folder F</span>
+                  <ul class="inFolder">
+                    <li>Books</li>
+                    <li>English</li>
+                    <li><span class="folder">University</span>
+                      <ul class="inFolder">
+                          <li>CompArch</li>
+                          <li>SP</li>
+                        <li><span class="folder">RPI</span>
+                          <ul class="inFolder">
+                            <li>task1.js</li>
+                            <li>task1.html</li>
+                            <li>task2.js</li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+</body>
+<script>
+    let directory = document.getElementsByClassName("folder");
+    let i;
+    for (i = 0; i < directory.length; i++) {
+        directory[i].addEventListener("click", function() {
+        this.parentElement.querySelector(".inFolder").classList.toggle("active");
+      });
+    }
+</script>	       
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>    
+</html>

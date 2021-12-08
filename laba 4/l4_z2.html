@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 2</p>   
+        <script>
+            let arr = [];
+            document.write("<p> Массив чисел <\p>");
+            for (let i = 0; i <= 14; i++) {
+                arr[i] = Math.floor( 1 + Math.random() * (50 + 1 - 1));  
+                document.write(" ", arr[i], " ");
+            }
+            let max = arr[0];
+            let index = 0;           
+            for (let i = 0; i <= 14; i++) {
+               if (max < arr[i] ) {
+                   max = arr[i];
+                   index = i;                   
+               }               
+            }
+            document.write("<p> максимальный элемент массива = ", max, "<\p>");
+                document.write("<p> индекс = ", index, "<\p>");    
+            arr[index] = arr[1];
+            arr[1] = max;
+            document.write("<p> Массив чисел <\p>");
+            for (let i = 0; i <= 14; i++) {               
+                document.write(" ", arr[i], " ");
+            }
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

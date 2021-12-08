@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Задание </title>
+        <meta charset="utf-8">
+        <script type="text/javascript">
+            document.write('ООО "Евроторг"');
+            document.write('<h2>Спасибо за покупку!</h2>');
+            let dat = new Date();                
+            document.write('Дата покупки: ', dat.toLocaleString()); 
+            let product1 = parseFloat(prompt("Введите стоимость продукта 1 ", ""));
+            let product2 = parseFloat(prompt("Введите стоимость продукта 2", " "));
+            let sales = parseFloat(prompt("Введите скидку от 1% до 5%"," "));
+            let sum = product1 + product2;
+            let salesOn = sum * 0.01 * sales;
+            let sumWithSales = sum - salesOn;
+            document.write("<p> Наименование продукта 1 = ", product1.toFixed(2),'BYN');
+            document.write("<p> Наименование продукта 2 = ", product2.toFixed(2),'BYN');
+            document.write('<h2> ИТОГО....',sum.toFixed(2), 'BYN</h2>');         
+            document.write('<p> Ваша скидка: ', sales, '%');
+            document.write('<p>   ',salesOn.toFixed(2),'BYN'); 
+            document.write('<p><h2> СУММА СО СКИДКОЙ</h2>');
+            document.write(sumWithSales.toFixed(2), 'BYN');      
+
+        </script>
+    </head>
+    <body>
+        <footer>
+            <p>Copyright  Клец А.А. ИП-31</p> 
+        </footer>
+    </body>
+</html>

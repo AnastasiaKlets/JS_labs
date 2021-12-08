@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 2</p>   
+        <script>
+            function Table (Screen_Diagonal, CPU, Screen_Resolution, Operating_System, RAM, Inner_Memory){
+                this.Screen_Diagonal =Screen_Diagonal;
+                this.CPU=CPU;
+                this.Screen_Resolution=Screen_Resolution;
+                this.Operating_System=Operating_System;
+                this.RAM=RAM;
+                this.Inner_Memory=Inner_Memory;
+            }
+            Object.defineProperty(this, "Screen_Diagonal",
+            {
+                get: function(){return this.Screen_Diagonal},
+                set: function(value) {this.Screen_Diagonal = value}
+                
+            });
+            Object.defineProperty(this, "CPU",
+            {
+                get: function(){return this.CPU},
+                set: function(value) {this.CPU = value}
+                
+            });
+            Object.defineProperty(this, "Screen_Resolution",
+            {
+                get: function(){return this.Screen_Resolution},
+                set: function(value) {this.Screen_Resolution = value}
+                
+            });
+            Object.defineProperty(this, "Operating_System",
+            {
+                get: function(){return this.Operating_System},
+                set: function(value) {this.Operating_System = value}
+                
+            });
+            Object.defineProperty(this, "RAM",
+            {
+                get: function(){return this.RAM},
+                set: function(value) {this.RAM = value}
+                
+            });
+            Object.defineProperty(this, "Inner_Memory",
+            {
+                get: function(){return this.Inner_Memory},
+                set: function(value) {this.Inner_Memory = value}
+                
+            });
+            Table.prototype.date = new Date('2019-01-12').toLocaleDateString();
+            Table.prototype.toString = function() 
+           {
+               return ` ${this.Screen_Diagonal}, 
+               ${this.CPU},
+               ${this.Screen_Resolution},
+               ${this.Operating_System},
+               ${this.RAM},
+               ${this.Inner_Memory},
+               ${this.date}`
+           }
+           Object.defineProperty(Table.prototype, "toString", {enumerable: false})
+           let table = new Table(10.1,'Exynos 7904','1921x1200','Android 9.0','4 Gb', '32 Gb');
+           for(let key in table){
+                document.write("<p>" + key + ": " + table[key] +"</p>" );
+            }
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<html>
+<head>
+    <title>Клец Анастасия</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <meta charset="utf-8" />
+</head>
+<body>
+    <input type="text" placeholder="Номер месяца">
+    <table></table>
+    <script>
+        $('input').on('input', () => {
+            if (parseInt($('input').val()) > 12)
+                throw $('input').val()
+            let date = new Date(new Date().getFullYear(), (+$('input').val() - 1))
+            let data = '<thead><th>пн</th><th>вт</th><th>ср</th><th>чт</th><th>пт</th><th>сб</th><th>вс</th><thead>'
+            $('table>thead').remove()
+            $('table>tbody').remove()
+            data += '<tbody><tr>'
+            let day = 0
+            let month = date.getMonth()
+            for (day = 0; day < date.getDay() - 1; day++) {
+                data += '<td></td>'
+            }
+            while (date.getMonth() == month) {
+                if (day >= 7) {
+                    data += '</tr><tr>'
+                    day = 0
+                }
+                data += '<td>' + date.getDate() + '</td>'
+                day++
+                date.setDate(date.getDate() + 1)
+            }
+            while(day < 7) {
+                data += '<td></td>'
+                day++
+            }
+            data += '</tr></tbody>'
+            $('table').append(data)
+        })
+    </script>
+</body>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

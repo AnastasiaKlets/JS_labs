@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Клец Анастасия  </title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script>
+            let value = 1;
+            let add = 2;
+            let current = 0;
+            document.write("<table>");
+            for (let i = 0; i < 10; i++) {
+                document.write("<tr>");
+                for (let j = 1; j < 11; j++) {
+                    current = i * 10 + j;
+                    if (current == value) {
+                        document.write("<td id = \"red\">");
+                        document.write(current);
+                        value += add;
+                        add++;
+                        document.write("</td>");
+                    }
+                    else {
+                        document.write("<td>");
+                        document.write(current);
+                        document.write("</td>");
+                    }
+                }
+                document.write("</tr>");
+            }            
+            document.write("</table>");
+        </script>
+    </head>
+    <body>     
+
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 1</p>   
+        <script>
+            let treug = [];
+            document.write("<p> Массив \"треугольных\" чисел <\p>");
+            for (let i = 0; i <= 9; i++) {
+                let n = i+1;
+                treug[i] = n*(n+1)/2;  
+                document.write(" ", treug[i], " ");
+            }
+            document.write("<p> Массив квадратов натуральных чисел <\p>");
+            let kvd = [];
+            for (let i = 0; i <= 9; i++) {
+                let n = i + 1;
+                kvd[i]=Math.pow(n,2);
+                document.write(" ", kvd[i], " ");                
+            }   
+            document.write("<p> Объединённый массив <\p>");  
+            let res = [];
+            for (let i = 0; i <=9 ; i++) {
+                res[i]= treug[i];                           
+            }   
+            for (let i = 0; i <=9 ; i++) {
+                res[i+10] =kvd[i] ;                           
+            }        
+            for (let i = 0; i <=19 ; i++) {
+                document.write(" ", res[i], " ");                          
+            } 
+            document.write("<p> Отсортированный массив<\p>"); 
+            res.sort((a, b) => b - a);
+            for (let i = 0; i <=19 ; i++) {
+                document.write(" ", res[i], " ");                          
+            } 
+           
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

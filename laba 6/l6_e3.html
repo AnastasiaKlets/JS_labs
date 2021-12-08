@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 3</p>   
+        <script>
+             class Table{
+                constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory){
+                    this.Screen_diagonal = Screen_diagonal;
+                    this.CPU=CPU;
+                    this.Screen_resolution=Screen_resolution;
+                    this.Operating_system=Operating_system;
+                    this.RAM=RAM;
+                    this.Inner_memory=Inner_memory;
+                }
+                get getScreen_diagonal(){ return this.Screen_diagonal}
+                set setScreen_diagonal(value){this.Screen_diagonal = value}
+
+                get getCPU(){ return this.CPU}
+                set setCPU(value){this.CPU = value}
+
+                get getScreen_resolution(){ return this.Screen_resolution}
+                set setScreen_resolution(value){this.Screen_resolution = value}
+
+                get getOperating_system(){ return this.Operating_system}
+                set setOperating_system(value){this.Operating_system = value}
+
+                get getRAM(){ return this.RAM}
+                set setRAM(value){this.RAM = value}
+
+                get getInner_memory(){ return this.Inner_memory}
+                set setInner_memory(value){this.Inner_memory = value}
+                
+                showInfo(){
+                    return`
+                    ${this.getScreen_diagonal},
+                    ${this.getCPU},
+                    ${this.getScreen_resolution},
+                    ${this.getOperating_system},
+                    ${this.getRAM},
+                    ${this.getInner_memory}`
+                }
+            } 
+            let table = new Table(10.1,"Exynos 7904","1920x1200","Android 9.0","4 Gb","32 Gb");
+                  
+            document.body.innerHTML = table.showInfo();
+    
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

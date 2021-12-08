@@ -1,0 +1,50 @@
+<html >
+    <head>
+    <meta  charset=utf-8" />
+    <title>Клец Анастасия</title>
+    <link rel="stylesheet" href="l7_e5.css">       
+    </head>
+
+    <p>Задание 5</p>
+    <body>
+        <div id="red" class="red"></div>
+        <div id="yellow" class="yellow"></div>
+        <div id="blue" class="blue"></div>
+    </body>
+    <script>
+        var red = document.getElementById("red");
+        var yellow = document.getElementById("yellow");
+        var blue = document.getElementById("blue");
+        red.onclick = function () 
+        {
+            if (red.style.zIndex != 3) 
+            {
+                blue.style.zIndex = 1;
+                yellow.style.zIndex = 2;
+                red.style.zIndex = 3;
+            } 
+        }
+        blue.onclick = function () 
+        {
+            if (blue.style.zIndex != 3) 
+            {
+                blue.style.zIndex = 3;
+                yellow.style.zIndex = 2;
+                red.style.zIndex = 1;
+            } 
+        }
+        yellow.onclick = function () 
+        {
+            if (yellow.style.zIndex != 3) 
+            {
+                blue.style.zIndex = 1;
+                yellow.style.zIndex = 3;
+                red.style.zIndex = 2;
+            } 
+        }
+    </script>
+<footer>
+
+</footer>    
+</html>
+

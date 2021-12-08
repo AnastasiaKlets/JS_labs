@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protection 10</title>
+</head>
+<body>
+    <script>
+        class Triangle {
+            constructor(side, angle1, angle2) {
+                this._side = side;
+                this._angle1 = angle1 / 57;
+                this._angle2 = angle2 / 57;
+            }
+
+            get thirdAngle() {
+                return (180 / 57) - this._angle1 - this._angle2;
+            }
+
+            set side(value) {
+                this._side = value;
+            }
+
+            set angle1(value) {
+                this._angle1 = value / 57;
+            }
+
+            set angle2(value) {
+                this._angle2 = value / 57;
+            }
+
+            get secondSide() {
+                return this._side * Math.sin(this._angle1) / Math.sin(this.thirdAngle);
+            }
+
+            get thirdSide() {
+                return this._side * Math.sin(this._angle2) / Math.sin(this.thirdAngle);
+            }
+
+            get area() {
+                return (Math.pow(this._side, 2) / 2) * (Math.sin(this._angle1) * Math.sin(this._angle2) / Math.sin(this.thirdAngle));
+            }
+            info() {
+                document.write(`First Side: ${this._side}<br>
+                                Second Side: ${this.secondSide}<br>
+                                Third Side: ${this.thirdSide}<br>
+                                First Angle: ${this._angle1 * 57}<br>
+                                Second Angle: ${this._angle2 * 57}<br>
+                                Third Angle: ${this.thirdAngle * 57}<br>
+                                Area: ${this.area}`);
+            }
+        }
+        let triangle = new Triangle(5, 30, 60);
+        triangle.info();
+    </script>
+</body>
+</html>

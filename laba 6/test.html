@@ -1,0 +1,173 @@
+<canvas id="canvas" width="200" height="200"></canvas>
+<div id="text"></div>
+<script type="text/javascript">
+   
+//    function task1(str){
+//     if(str.length % 2 == 1) {
+//         str = str + '_';
+//     }
+
+//     let a  = str.split("")
+//     .map((c,i,arr)=>{if(i%2==0) return arr[i]+arr[i+1]})
+//     .filter(el=>el!=null);
+    
+//     alert(a);
+
+// }
+// let str = prompt();
+// task1(str);
+
+// function task11() {
+//     function sortByLength(s1,s2)
+//     {
+//         return s2.length - s1.length
+//     }
+//     let strList = []
+//     let str
+//     do {
+//         str = prompt("Введите строки, пустая строка завершит ввод")
+//         if(str) strList.push(str)
+//     }
+//     while(str != "")
+
+//     let sortedList = Array.copy(strList)
+//     sortedList.sort(sortByLength)
+//     let maxLen = sortedList[0].length
+    
+//     strWithMaxLenIndex = strList.map( (s,i) => new function() {this.index = i, this.len = s.length}).map(o=>o.len)
+//     let sr = strWithMaxLenIndex.filter(o => o.len == maxLen).map(o=>o.index)
+    
+//     alert(strWithMaxLenIndex)
+// }
+// task11()
+
+// //string tasks
+// function task2 () {
+//     let str = prompt('Введите строку')
+//     if (str != '') {
+//         let reversedStr = str.split(' ')
+//             .map( (word) =>  word.split('').reverse().join('') ).join('')
+//         alert(reversedStr)
+//     }
+    
+// }
+// task2()
+
+// function task10 () {
+//     let str = prompt('Введите строку')
+//     if (str != '') {
+//         let normalizedStr = str.split(' ').filter(c => c != '').join(' ')
+//         alert(normalizedStr)
+//     }
+// }
+// task10()
+
+// function task20 () {
+//     let str = prompt('Введите строку')
+//     if (str != '') {
+//         let pmCount = str.split('').filter(c => c == '+' || c == '-').length
+//         let pm0Count = str.split('').filter( (c,i) => (c == '+' || c == '-') && str[i+1] == '0' ).length
+//         alert('Количество + и - : '+pmCount)
+//         alert('Количество + и - за которыми следует 0 : '+pm0Count)
+        
+//     }
+// }
+// task20()
+
+// //arr tasks
+// function task2a () {
+//     let str = prompt('Введите элементы массива через пробел')
+//     if (str != '') {
+//         let arr = str.split(' ').map(s => parseInt(s))
+//         let maxeven = Math.max(...arr.filter( (e,i) => i % 2 == 0))
+//         alert(maxeven)
+//     }
+// }
+// task2a()
+
+// function task10a () {
+//     let str = prompt('Введите элементы массива через пробел')
+//     if (str != '') {
+//         let arr = str.split(' ').map(s => parseInt(s))
+//         let minIndex = arr.indexOf(Math.min(...arr))
+//         let maxIndex = arr.lastIndexOf(Math.max(...arr))
+//         let sumbtwmaxandmin = arr.filter((e,i) => i > minIndex && i < maxIndex).reduce((a,b) => a + b)
+//         alert(sumbtwmaxandmin)
+//     }
+// }
+// task10a()
+
+// function task20a () {
+//     function getArrayByFunc(n,func) {
+//         let arr = new Array()
+//         for(let i = 1; i <= n; i++) {
+//             arr.push(func(-50,50))
+//         }
+//         return arr
+//     }
+//     function getRandomNum(min=0,max=100){
+//         let rand = min + Math.random() * (max + 1 - min)
+//         return Math.floor(rand)
+//     }
+
+//     let arr = getArrayByFunc(20,getRandomNum)
+//     alert(arr)
+//     arr = arr.filter(e => e >= 0)
+//     alert(arr)
+// }
+// task20a()
+class Coord {
+    constructor(x,y) {
+        this.x = x;
+        this.y = y;
+    }
+    out() {
+        return '('+this.x+','+this.y+')';
+    }
+}
+class Rectangle {
+    constructor(left,top,right,bottom) {
+        this.leftTop = new Coord(left,top);
+        this.rightBottom = new Coord(right,bottom);
+        this.verticalSide = bottom - top;
+        this.horizontalSide = right - left;
+    }
+    get perimetr() {
+        return (this.horizontalSide+this.verticalSide)*2;
+    }
+    set leftTopCoord(coord) {
+        this.leftTop = new Coord(coord.x,coord.y);
+    }
+    set rightBottomCoord(coord) {
+        this.rightBottom = new Coord(coord.x,coord.y);
+    }
+    get sides() {
+        return this.verticalSide,this.horizontalSide;
+    }
+    square() {
+        return this.verticalSide * this.horizontalSide;
+    }
+    getInfo() {
+        return 'Первая точка: '+this.leftTop.out() +
+            ', Вторая точка: ' + this.rightBottom.out() + '\n'+
+            'Вертикальная сторона: ' + this.verticalSide +
+            ', Горизонталньая высота: ' + this.horizontalSide + '\n' + 
+            'Периметр: ' + this.perimetr + '\n' +
+            'Площадь: ' + this.square();
+    }
+    draw() {
+        var canvas = document.getElementById('canvas');
+        if (canvas.getContext) {
+            var ctx = canvas.getContext('2d');
+
+            ctx.fillRect(this.leftTop.x,this.leftTop.y,this.rightBottom.x,this.rightBottom.y);
+            
+        }
+    }
+}
+let rect = new Rectangle(10,20,30,40);
+rect.draw();
+rect.leftTopCoord = new Coord(50,60);
+rect.rightBottomCoord = new Coord(60,70);
+text.innerHtml = (rect.getInfo());
+</script>

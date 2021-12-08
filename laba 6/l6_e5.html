@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 5</p>   
+        <script>
+            class Table{
+                constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory){
+                    this.Screen_diagonal = Screen_diagonal;
+                    this.CPU=CPU;
+                    this.Screen_resolution=Screen_resolution;
+                    this.Operating_system=Operating_system;
+                    this.RAM=RAM;
+                    this.Inner_memory=Inner_memory;
+                }
+                showInfo(){
+                    return`
+                    ${this.Screen_diagonal},
+                    ${this.CPU},
+                    ${this.Screen_resolution},
+                    ${this.Operating_system},
+                    ${this.RAM},
+                    ${this.Inner_memory}`
+                }
+            }
+            class successorTable extends Table{
+                constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory, date, cost){
+                    super(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory);
+                    this.date=date;
+                    this.cost=cost;
+                }
+                get getDate() { return this.date} 
+                set setDate (value) { this.date = value}
+                get getCost() {return this.cost}
+                set setCost(value) { this.cost = value}
+                showInformation(){
+                    
+                    return`${super.showInfo()},
+                    ${this.date}, 
+                    ${this.cost}`
+                }
+
+            }
+            function randomm(min, max){
+                let rand = min + Math.random()*(max+1-min);
+                return Math.floor(rand);
+            }
+            function createArray(count){
+                let arr = []
+                for(let i = 0; i < count; i++ ){
+                    arr[i] = new successorTable (randomm(5, 15),`CPU`,`Screen resolution`,`Operating system`,`RAM`,`Inner memory`, new Date('01/10/2018'), randomm(100,900));
+                }
+                return arr
+            }
+            
+            let array = createArray(4);
+            let minCost = array.map(x => x.getCost).sort((a,b) => a-b)[0]
+            let maxCost = array.map(x => x.getCost).sort((a,b) => b-a)[0]
+            let sumCost = array.map(x => x.getCost).reduce((a,b) => a + b ,0)
+            let avgCost = sumCost / array.length
+            let moreAvgCost = array.filter(x => x.getCost > avgCost).length
+            for (let i = 0; i < array.length; i++) {
+                document.write("<p>" + array[i].showInformation() + "</p>")
+                
+            }
+            document.write("<p> Максимальная стоимость = " + maxCost + "</p>");
+            document.write("<p> Минимальная стоимость = " + minCost + "</p>");
+            document.write("<p> Общая соимость стоимость = " + sumCost + "</p>");
+            document.write("<p> Средняя стоимость = " + avgCost + "</p>");
+            document.write("<p> Количество обьектов стоимость которых выше стреднего = " + moreAvgCost + "</p>");
+           
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

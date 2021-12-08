@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Клец Анастасия
+        </title>
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <meta charset="utf-8">
+        <style>
+            .button{
+                width: 50px;
+                height: 50px;
+            }
+            .textview{
+                width: 200px;
+                margin: 5px 5px 0px 5px;
+                height: 50px;
+            }
+        </style>
+    </head>
+    <body>  
+        <input class="textview" name="textview" type="text" id='textview'>
+        <table>
+            <tr>
+                <td><input class="button" type="button" value="MS" onclick="MakeBufer()"></td>
+                <td><input class="button" type="button" value="MR" onclick="GetBufer()"></td>
+                <td><input class="button" type="button" value="DEL" onclick="back()"></td>
+                <td><input class="button" type="button" value="C" onclick="clearAll()"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="7" onclick="input(7)"></td>
+                <td><input class="button" type="button" value="8" onclick="input(8)"></td>
+                <td><input class="button" type="button" value="9" onclick="input(9)"></td>
+                <td><input class="button" type="button" value="+" onclick="input('+')"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="4" onclick="input('4')"></td>
+                <td><input class="button" type="button" value="5" onclick="input('5')"></td>
+                <td><input class="button" type="button" value="6" onclick="input('6')"></td>
+                <td><input class="button" type="button" value="-" onclick="input('-')"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="1" onclick="input('1')"></td>
+                <td><input class="button" type="button" value="2" onclick="input('2')"></td>
+                <td><input class="button" type="button" value="3" onclick="input('3')"></td>
+                <td><input class="button" type="button" value="*" onclick="input('*')"></td>
+            </tr>
+            <tr>
+                <td><input class="button" type="button" value="." onclick="input('.')"></td>
+                <td><input class="button" type="button" value="0" onclick="input('0')"></td>
+                <td><input class="button" type="button" value="/" onclick="input('/')"></td>
+                <td><input class="button" type="button" value="=" onclick="equal()"></td>  
+            </tr>
+        </table>
+    </body>
+    <script>
+        $('#textview').keyup((event) => {
+        if (event.keyCode === 13) {
+            equal();
+        }
+        });
+
+        function input(num) {
+            let textview = $('#textview');
+            textview.val(textview.val() + num);
+        }
+        function clearAll() {
+            let textview = $('#textview');
+            textview.val('');
+        }
+        function back() {
+            let textview = $('#textview');
+            let value = textview.val();
+            textview.val(value.substring(0, value.length - 1));
+        }
+        function equal() {
+            let textview = $('#textview');
+            let value = textview.val();
+
+        if(value) {
+            textview.val(eval(value));
+        }
+        }
+        function MakeBufer() {
+            let textview = $('#textview');
+            localStorage.setItem("history", JSON.stringify(textview.val()));
+            console.log(localStorage)
+        }
+        function GetBufer() {
+            let textview = $('#textview');
+            let str = localStorage.getItem("history")
+            textview.val(JSON.parse(str));
+        }
+    </script>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="2.css">
+    <meta charset="UTF-8">
+    <title>VV2</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+    <div>
+    <table>
+        <tbody>
+            <tr>
+                <td colspan="4"><input type="text"></td>
+            </tr>
+            <tr>
+                <td><button>MS</button></td>
+                <td><button>MR</button></td>
+                <td><button>C</button></td>
+                <td><button>CE</button></td>
+            </tr>
+            <tr>
+                <td><button>9</button></td>
+                <td><button>8</button></td>
+                <td><button>7</button></td>
+                <td><button>/</button></td>
+            </tr>
+            <tr>
+                <td><button>6</button></td>
+                <td><button>5</button></td>
+                <td><button>4</button></td>
+                <td><button>*</button></td>
+            </tr>
+            <tr>
+                <td><button>3</button></td>
+                <td><button>2</button></td>
+                <td><button>1</button></td>
+                <td><button>-</button></td>
+            </tr>
+            <tr>
+                <td><button>.</button></td>
+                <td><button>0</button></td>
+                <td><button>=</button></td>
+                <td><button>+</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+    <script>
+        var token = (w) => {
+            var input = $(w);
+            return (event) =>{
+                let click = event.target.textContent
+                if(click == "C")
+                    input.val("");
+                else if(click == "CE"){
+                    input.val("");
+                    localStorage.clear();
+                }
+                else if(click == "MS")
+                    localStorage.setItem(0,input.val());
+                else if(click == "MR")
+                    input.val(input.val() + localStorage.getItem(0));
+                else if(click == "=")
+                    input.val(eval(input.val()));
+                else
+                    input.val(input.val() + event.target.textContent);
+                }
+            }
+        $("input").on("input", function(event) {
+            if (this.value.endsWith("=")) 
+                this.value = eval(this.value.slice(0, -1))
+        })
+        var cells = $("button");
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].onclick = token("input");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 4</p>   
+        <script>
+            string = prompt("Введите строку");
+            document.write("<p> Введённая строка: ", string, "</p>");
+            string = string.replace(/\w+/g, str => {
+            let t = str.substr(1, str.length-2).split("").sort((a, b) => Math.random() * 3 - 2).join("");
+            return str.charAt(0) + t + str.charAt(str.length - 1);
+            });
+            document.write("<p> Результат: ", string, "</p>");
+
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

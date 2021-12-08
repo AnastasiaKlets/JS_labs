@@ -1,0 +1,94 @@
+<html>
+<head>
+    <script src="jQuery.js"></script>
+    <script src="jSort.js"></script>
+    <title>Vankovich Vladislav</title>
+    <meta charset="windows-1251" />
+    <style>
+		td,th {
+		border: 1px solid black;
+		padding: 5px;
+		text-align: center;}
+	</style>
+</head>
+<body>
+    <table id="table"></table>
+    <script>
+        class SSD {
+            constructor(Volume, Interface, FlashChipType, Controller) {
+                this.volume = Volume
+                this.interface = Interface
+                this.flashChipType = FlashChipType
+                this.controller = Controller
+            }
+            get volumeGetter() {
+                return this.volume
+            }
+            set powerSetter(value) {
+                this.volume = value
+            }
+
+            get interfaceGetter() {
+                return this.interface
+            }
+            set interfaceSetter(value) {
+                this.interface = value
+            }
+
+            get flashGetter() {
+                return this.flashChipType
+            }
+            set flashSetter(value) {
+                this.flashChipType = value
+            }
+
+            get controlGetter() {
+                return this.controller
+            }
+            set controlSetter(value) {
+                this.controller = value
+            }
+
+            toString() {
+                return `${this.volumeGetter}, ${this.interfaceGetter},${this.flashGetter},
+                    ${this.controlGetter}`
+            }
+        }
+
+        function randomizer(min,max) {
+            let rand = min + Math.random() * (max + 1 - min)
+            return Math.floor(rand)
+        }
+        function CreateArray(count) {
+            let array = []
+            for (let i = 0; i < count; i++) {
+                array[i] = new SSD(randomizer(254, 2000), `Interface B2${i*i}`, `FlashChipType MK${(i+3)*(i+2)}`, `Controller AK-${2*i*i}`)
+            }
+            return array
+        }
+        function CreateTable(arr, out) {
+
+            let table = document.querySelector(out)
+            let tableStr = "<thead><tr><th>"
+            tableStr += Object.keys(arr[0]).join("</th><th>")
+            tableStr += "</th></tr></thead>"
+            arr.forEach(el => {
+                tableStr += "<tr>"
+                for (let i in el) {
+                    tableStr += "<td>" + el[i] + "</td>"
+                }
+                tableStr += "</tr>"
+            })
+            $(out).append(tableStr)
+        }
+        let jsonString = JSON.stringify(CreateArray(10))
+        localStorage.setItem('jsonArray', jsonString)
+        let value = localStorage.getItem('jsonArray')
+        let fromLS = jQuery.parseJSON(value)
+        CreateTable(fromLS, '#table')
+        document.getElementById('table').addEventListener('click', () => {
+             $("#table").tablesorter()
+        })
+    </script>
+</body>
+</html>

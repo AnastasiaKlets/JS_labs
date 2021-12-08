@@ -1,0 +1,11 @@
+let radius = parseInt(prompt("Введите радиус целиндра r", ""));
+let height = parseInt(prompt("Введите высоту целиндра h", ""));
+let area = Math.PI * Math.pow(radius,2);
+let volume = area * height;
+document.getElementById("param1").innerText = "Площадь целиндра S =" + area.toFixed(2);
+document.getElementById("param2").innerText = "Объём целиндра V =" + volume.toFixed(2);
+let z = parseInt(prompt("Введите z", ""));
+let y = parseInt(prompt("Введите y", ""));
+let x = parseInt(prompt("Введите x", ""));
+let b = 5 * Math.tan(z) - 4 * Math.pow(y,2) + Math.abs(x*y);
+document.getElementById("param3").innerText = "Значение функции b =" + b.toFixed(2);

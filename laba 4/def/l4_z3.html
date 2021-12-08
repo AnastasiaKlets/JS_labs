@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>   
+        <script>
+            let arr = [];
+            let count = 20;
+            document.write("<p> Массив чисел <\p>");
+            for (let i = 0; i < count; i++) {
+                arr[i] = Math.floor( 0 + Math.random() * (10));  
+                document.write(" ", arr[i], " ");
+            }
+            let sum = 0;
+            for (let i = 0; i< count; i++){                
+                sum = sum + arr[i];                  
+            }
+            let avg = 0;
+            avg = sum/arr.length;
+            document.writeln("<p> sum = ", sum, "<\p>");
+            document.writeln("<p> avg = ", avg, "<\p>");  
+            for (let i = 0; i < arr.length; i++) {
+                if (arr[i]<avg) {
+                    document.writeln("<p> элементы массива меньше среднего  = ", arr[i], "<\p>"); 
+                }                
+            }      
+
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

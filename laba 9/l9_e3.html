@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+	<style>
+		#ball {
+			transition-duration: 3s;
+		}
+	</style>
+</head>
+<body>
+	<img src="field1.jpg" style="position: absolute" onclick="moveBall(event)">
+	<img src="ball.png" style="position: absolute" id="ball">
+</body>
+<script>
+	var ballImg = document.getElementById('ball');
+	ballImg.style.left = 309 + 'px';
+	ballImg.style.top = 163 + 'px';
+	function moveBall(event) {
+		let x = event.clientX;
+		let y = event.clientY;
+
+		if (x - 50 > 0 && y - 50 > 0 && x + 50 < 700 && y + 50 < 400) {
+			ballImg.style.left = x - 50 + 'px';
+			ballImg.style.top = y - 50 + 'px';
+		}
+	}
+</script>
+</html>

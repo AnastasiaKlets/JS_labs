@@ -1,0 +1,53 @@
+<html>
+    <head>    
+        <meta charset="UTF-8" />
+        <title>Клец Анастасия</title>
+    </head>
+</head>
+<p>Задание 4</p>
+<body>
+    <div style="width:9em;padding:5px">
+        <label for="idColor">Выберите цвет:</label>
+        <input type="color" list="colorList" name="idColor" id="idColor" value="#ffffff">
+        <datalist id="colorList">
+        <option value="#000000">
+        <option value="#FFFFFF">
+        <option value="#FF0000">
+        <option value="#00FF00">
+        <option value="#0000FF">
+        <option value="#FFFF00">
+        <option value="#00FF00">
+        <option value="#00FFFF">
+        <option value="#FF00FF">
+        <option value="#C0C0C0">
+        <option value="#808080">
+        <option value="#800000">
+        <option value="#808000">
+        <option value="#008000">
+        <option value="#800080">
+        <option value="#008080">
+        <option value="#000080">
+        <option value="#008080">
+        <option value="#FFCCFF">
+        <option value="#FFCCE5">  
+        <option value="#CCE5FF">
+        <option value="#E0E0E0">
+        <option value="#FFFF33">
+        <option value="#CCFF99">
+        <option value="#FFE5CC">
+        <option value="#FFCCCC">      
+        </datalist>
+    </div>
+    <script>
+        let currentColorInput = document.getElementById('idColor')
+        currentColorInput.addEventListener('change',changeColor)
+        function changeColor() {
+            document.body.style.backgroundColor = currentColorInput.value
+        }
+    </script>
+</body>  
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>    
+</html>
+

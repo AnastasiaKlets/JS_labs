@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Клец Анастасия
+	</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+		let shekel, euro, wona;
+		let shekelsite = 'https://www.nbrb.by/api/exrates/rates/ils?parammode=2';
+		let eurosite = 'https://www.nbrb.by/API/ExRates/Rates/292';
+		let wonasite = 'https://www.nbrb.by/api/exrates/rates/krw?parammode=2';
+
+		shekelrate();
+		eurorate();
+		wonarate();
+		let cell = document.getElementsByTagName("td");
+		for (let i = 0; i < cell.length; i++) {
+			cell[i].style.border = "1px solid black";
+		}
+		async function shekelrate() {
+			let data1 = await fetch(shekelsite);
+			let shekelonfo = await data1.json();
+			shekel = await shekelonfo.Cur_OfficialRate;
+		}
+		async function eurorate() {
+			let data2 = await fetch(eurosite);
+			let euroinfo = await data2.json();
+			euro = await euroinfo.Cur_OfficialRate;
+		}
+		async function wonarate() {
+			let data3 = await fetch(wonasite);
+			let wonainfo = await data3.json();
+			let wona = await wonainfo.Cur_OfficialRate;
+            document.write('<table id = "tablo">');
+            document.write(`<tr><td>Название валюты</td><td>Курс</td><td>К ILS</td></tr>`);
+            document.write(`<tr><td>Израильский шекель</td><td>${(shekel).toFixed(3)}</td><td>${(shekel/shekel).toFixed(2)}</td></tr>`);
+            document.write(`<tr><td>Ирландское евро</td><td>${(euro).toFixed(3)}</td><td>${(euro/shekel).toFixed(2)}</td></tr>`);
+            document.write(`<tr><td>Южнокорейская вона</td><td>${(wona).toFixed(3)}</td><td>${(wona/shekel).toFixed(2)}</td></tr>`);
+            let cell = document.getElementsByTagName("td");
+            for (let i = 0; i < cell.length; i++) {
+                cell[i].style.border = "1px solid black";
+            }
+		}
+		
+	</script>
+</body>
+<footer>
+    <p>Copyright  Клец А.А. ИП-31</p> 
+</footer>
+</html>

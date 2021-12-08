@@ -1,0 +1,91 @@
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="jSort.js"></script>
+    <title>Клец Анастасия</title>
+    <meta charset="utf-8" />
+    <style>
+		td,th {
+		border: 1px solid black;
+		padding: 5px;
+		text-align: center;}
+	</style>
+</head>
+<body>
+    <table id="table"></table>
+    <script>
+        class Tablet {
+            constructor(Screen_diagonal, CPU, Screen_resolution, Operating_system, RAM, Inner_memory){
+                    this.Screen_diagonal = Screen_diagonal;
+                    this.CPU=CPU;
+                    this.Screen_resolution=Screen_resolution;
+                    this.Operating_system=Operating_system;
+                    this.RAM=RAM;
+                    this.Inner_memory=Inner_memory;
+            }
+                get getScreen_diagonal(){ return this.Screen_diagonal}
+                set setScreen_diagonal(value){this.Screen_diagonal = value}
+
+                get getCPU(){ return this.CPU}
+                set setCPU(value){this.CPU = value}
+
+                get getScreen_resolution(){ return this.Screen_resolution}
+                set setScreen_resolution(value){this.Screen_resolution = value}
+
+                get getOperating_system(){ return this.Operating_system}
+                set setOperating_system(value){this.Operating_system = value}
+
+                get getRAM(){ return this.RAM}
+                set setRAM(value){this.RAM = value}
+
+                get getInner_memory(){ return this.Inner_memory}
+                set setInner_memory(value){this.Inner_memory = value}
+
+
+            toString() {
+                return `${this.getScreen_diagonal},
+                    ${this.getCPU},
+                    ${this.getScreen_resolution},
+                    ${this.getOperating_system},
+                    ${this.RAM},
+                    ${this.Inner_memory}`
+            }
+        }
+
+        function randomizer(min,max) {
+            let rand = min + Math.random() * (max + 1 - min)
+            return Math.floor(rand)
+        }
+        function CreateArray(count) {
+            let array = []
+            for (let i = 0; i < count; i++) {
+                array[i] = new Tablet(randomizer(254, 2000), `Exynos${randomizer(254, 2000)}`, `${randomizer(1000,2000)}x${randomizer(500,1500)}`, `Android${randomizer(3,12)}`,`${randomizer(3,12)}GB`, `${randomizer(3,512)}GB`)
+            }
+            return array
+        }
+        function CreateTable(arr, out) {
+
+            let table = document.querySelector(out)
+            let tableStr = "<thead><tr><th>"
+            tableStr += Object.keys(arr[0]).join("</th><th>")
+            tableStr += "</th></tr></thead>"
+            arr.forEach(el => {
+                tableStr += "<tr>"
+                for (let i in el) {
+                    tableStr += "<td>" + el[i] + "</td>"
+                }
+                tableStr += "</tr>"
+            })
+            $(out).append(tableStr)
+        }
+        let jsonString = JSON.stringify(CreateArray(10))
+        localStorage.setItem('jsonArray', jsonString)
+        let value = localStorage.getItem('jsonArray')
+        let fromLS = jQuery.parseJSON(value)
+        CreateTable(fromLS, '#table')
+        document.getElementById('table').addEventListener('click', () => {
+             $("#table").tablesorter()
+        })
+    </script>
+</body>
+</html>

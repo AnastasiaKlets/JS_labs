@@ -1,0 +1,99 @@
+<html>
+<head>
+    <title>1</title>
+    <meta charset="utf-8">
+    <style>
+        label{
+            display:block;
+        }
+        button{
+            display:block;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="fullName">Фамилия:</label>
+        <input id="fullName" type="text" size="30" value="">
+        <label for="name">Имя:</label>
+        <input id="name" type="text" size="30" value="">
+        <div>
+				Образование:
+				<input name="object" type="radio" value="midle">Среднее
+				<input name="object" type="radio" value="midspec">Средне-специальное
+				<input name="object" type="radio" value="high" checked="checked">Высшее
+			</div>
+    </form>
+    <button id="add">Добавить</button>
+    <button id="table">Вывести таблицу</button>
+    <table id="tableId"></table>
+    <script>
+        class Form {
+            constructor(fullName, name, education) {
+                this._fullname = fullName
+                this._name = name
+                this._education = education
+            }
+            get fullName() {
+                return this._fullname
+            }
+            get name() {
+                return this._name
+            }
+            get education() {
+                return this._education
+            }
+
+        }
+        function CreateTable(arr, out) {
+            let table = document.querySelector(out);
+            let tableStr = "<tr><th>"
+            tableStr += Object.keys(arr[0]).join("</th><th>")
+            tableStr += "</th></tr>"
+            arr.forEach(el => {
+                tableStr += "<tr>";
+                for (let i in el) {
+                    tableStr += "<td>" + el[i] + "</td>"
+                }
+                tableStr += "</tr>"
+            });
+            table.innerHTML = tableStr;
+        }
+        let array = []
+        function AddToArray() {
+            let all_objects = document.getElementsByName('object')
+            let object = getCheckedRadio(all_objects).value
+            let object_text = ''
+            switch (object) {
+                case 'midle':
+                    object_text = 'Среднее';
+                    break;
+                case 'midspec':
+                    object_text = 'Средне-специальное';
+                    break;
+                case 'high':
+                    object_text = 'Высшее';
+                    break;
+            }
+            let form = new Form(document.getElementById('fullName').value,
+                document.getElementById('name').value, object_text)
+            array.push(form)
+        }
+        function SendToLocalStorage() {
+            localStorage.setItem('value', JSON.stringify(array))
+            let arr = JSON.parse(localStorage.getItem('value'))
+            CreateTable(arr, '#tableId')
+        }
+        function getCheckedRadio(radio_group) {
+            for (var i = 0; i < radio_group.length; i++) {
+                var button = radio_group[i];
+                if (button.checked) {
+                    return button;
+                }
+            }
+        }
+        document.getElementById('add').addEventListener('click', AddToArray)
+        document.getElementById('table').addEventListener('click', SendToLocalStorage)
+    </script>
+</body>
+</html>

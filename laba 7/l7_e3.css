@@ -1,0 +1,30 @@
+ul, #List {
+    list-style-type: none;
+  }
+  
+  #List {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .folder {
+    cursor: auto;
+    user-select: none;
+  }
+  
+  .folder::before {    
+    color:#d12c71;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  .inFolder {
+    display: none;
+  }
+  
+  .active {
+    display: block;
+  }
+  li:hover {
+  font-weight: bold;
+  }

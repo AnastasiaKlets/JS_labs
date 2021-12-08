@@ -1,0 +1,34 @@
+.yellow, .blue, .red{
+    position: absolute;
+}
+
+.yellow {
+    top: 150px;
+    left: 150px;
+    background: #f5e683;
+    z-index: 3;
+}
+
+.blue {
+    top: 100px;
+    left: 100px;
+    background:#62ceec;
+    z-index: 2;
+}
+
+.red {
+    top: 50px;
+    left: 50px;
+    background: #e3856b;
+    z-index: 1;
+}
+
+div {
+    height: 150px;
+    width: 150px;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    text-align: right;
+    padding: 5px;
+    box-sizing: border-box;
+}

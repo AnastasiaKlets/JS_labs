@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Клец Анастасия</title>
+  </head>
+  <body>
+    <div>        
+        <p>Задание 4</p>   
+        <script>
+            let fruits=["apple","pineapple","mango","melon","grape"]; 
+            let citrus=["orange","lemon","lime"];  
+            document.write("Массив fruits: ")  
+            for (let i = 0; i < fruits.length; i++) {
+                document.write("<p>", fruits[i],"<\p>");                
+            }
+            document.write("Массив citrus: ") 
+            for (let i = 0; i < citrus.length; i++) {
+                document.write("<p>", citrus[i],"<\p>");                
+            }
+            document.write("объединенный массив fruits и citrus: ");
+            let arr = fruits.concat(citrus);
+            for (let i = 0; i < arr.length; i++) {
+                document.write("<p>", arr[i],"<\p>");                
+            }
+            document.write("массив fruits, в котором после mango вставлены: pear, cherry, plum, raspberry, strawberry: ");
+            fruits.pop();
+            fruits.pop();
+            arr1 = ["pear","cherry","plum","raspberry","strawberry"];
+            fruits = fruits.concat(arr1);
+            for (let i = 0; i < fruits.length; i++) {
+                document.write("<p>", fruits[i],"<\p>");                
+            }
+            document.write("массив fruits, в котором удалены последние 3 элемента: ");
+            fruits.pop();
+            fruits.pop();
+            fruits.pop(); 
+            for (let i = 0; i < fruits.length; i++) {
+                document.write("<p>", fruits[i],"<\p>");                
+            }
+            document.write("отсортированный в алфавитном порядке массив fruits: ");
+            fruits.sort();
+            for (let i = 0; i < fruits.length; i++) {                
+                document.write("<p>", fruits[i],"<\p>");                
+            } 
+            document.write("массив fruits в обратном алфавитном порядке: ");
+            fruits.reverse();
+            for (let i = 0; i < fruits.length; i++) {                
+                document.write("<p>", fruits[i],"<\p>");                
+            }
+            document.write("массив fruits, отсортированный по длине слов: ");
+            fruits.sort(function(a,b){
+            return b.length - a.length});
+            for (let i = 0; i < fruits.length; i++) {                
+                document.write("<p>", fruits[i],"<\p>");                
+            }
+        </script>
+    </div>
+    <footer>
+        <p>Copyright  Клец А.А. ИП-31</p> 
+    </footer>
+  </body>
+</html>

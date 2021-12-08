@@ -1,0 +1,86 @@
+
+<html>
+<head>
+    <title>4</title>
+    <meta charset="utf-8">
+    <style>
+        .select {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Blocks</h2>
+    <div>
+        <p>First</p>
+        <p>Second</p>
+        <p>Third</p>
+    </div>
+
+    <div>
+        <p>First</p>
+        <p>Second</p>
+        <p>Third</p>
+    </div>
+
+    <div>
+        <p>First</p>
+        <p>Second</p>
+        <p>Third</p>
+    </div>
+
+    <h2>Lists</h2>
+    <p>First</p>
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+    <p>Second</p>
+    <ol>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ol>
+    <h2>Pictures</h2>
+    <div>
+        <picture><img  alt="" /></picture>
+        <picture><img  alt="" /></picture>
+        <picture><img  alt="" /></picture>
+    </div>
+    <h2>Dropdown list</h2>
+    <select name="list" id="">
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="">Three</option>
+    </select>
+    <div></div>
+
+    <script>
+        addElementListener(document.getElementsByTagName('body')[0]);
+        
+        function addElementListener(element) {
+            element.addEventListener('click', onClick, true);
+            for (const el of element.children) {
+                addElementListener(el);
+            }
+        }
+        
+        function onClick(event) {
+            for(let child of document.querySelectorAll('*')) {
+                if(child.classList.contains('select'))
+                child.classList.remove('select');
+            }
+            let cur = event.currentTarget;
+            if(cur.previousElementSibling) {
+            cur.previousElementSibling.classList.add('select');
+            }
+            if(cur.nextElementSibling) {
+            cur.nextElementSibling.classList.add('select');
+            }
+        }
+        </script>
+</body>
+</html>
+
+
